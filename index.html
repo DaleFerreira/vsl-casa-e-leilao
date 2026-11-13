@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Casa &amp; Leilão | Como identificar imóveis de leilão com potencial de lucro</title>
+  <meta name="description" content="Uma aula sobre a análise de imóveis de leilão e a decisão de arrematar.">
+  <meta property="og:title" content="Casa &amp; Leilão | Como identificar imóveis de leilão com potencial de lucro">
+  <meta property="og:description" content="Uma aula sobre a análise de imóveis de leilão e a decisão de arrematar.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://daleferreira.github.io/vsl-casa-e-leilao/assets/vsl-capa.jpg">
+  <meta property="og:url" content="https://daleferreira.github.io/vsl-casa-e-leilao/">
+  <!-- Só na versão de teste: fora do Google. -->
+  <meta name="robots" content="noindex, nofollow">
+  <meta property="og:locale" content="pt_BR">
+  <meta name="theme-color" content="#EDEAE4">
+  <link rel="icon" href="assets/icone.png">
+  <link rel="preload" href="assets/fonts/playfair-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/estilo.css">
+  <script src="js/player.js" defer></script>
+  <script src="js/dobras.js" defer></script>
+  <script src="js/checkout.js" defer></script>
+  <script src="js/whatsapp.js" defer></script>
+</head>
+<body>
+  <div class="upw-bg-topo" aria-hidden="true"><canvas></canvas></div>
+  <main>
+    <section class="dobra" aria-labelledby="titulo">
+      <picture class="marca hero-anim-item" style="--gvx-d:0ms">
+        <source srcset="assets/logo-casa-e-leilao.webp" type="image/webp">
+        <img src="assets/logo-casa-e-leilao.png" width="430" height="240" alt="Casa &amp; Leilão">
+      </picture>
+      <h1 id="titulo" class="hero-anim-item" style="--gvx-d:80ms">Como identificar imóveis de leilão com <em>potencial de lucro</em> e saber quando arrematar</h1>
+      <p class="chamada hero-anim-item" style="--gvx-d:160ms"><span>Assista ao vídeo para descobrir</span></p>
+      <!-- Palco adaptado da estrutura GVX, linha 543. -->
+      <div class="gvx-vsl-stage hero-anim-item" style="--gvx-d:240ms">
+        <div id="player" class="gvx-vsl previa" role="region" aria-label="Aula Casa &amp; Leilão" tabindex="0">
+          <!-- Para trocar o vídeo: troque assets/vsl.mp4 -->
+          <video id="video" playsinline muted autoplay loop preload="metadata" poster="assets/vsl-capa.webp" aria-label="Vídeo da aula">
+            <source src="assets/vsl.mp4" type="video/mp4">
+          </video>
+          <div class="gvx-vsl-skel" aria-hidden="true"></div>
+          <button class="selo-som" id="ativar" aria-label="Ativar o som e assistir do início">
+            <span class="selo-icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 5-6 4H2v6h3l6 4Z"/><path d="M15 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/></svg></span>
+            <span class="selo-pequeno">Seu vídeo já começou</span>
+            <strong><span class="so-toque">Toque</span><span class="so-clique">Clique</span> para ativar o som</strong>
+          </button>
+          <div id="pausa" class="aviso-pausa" hidden>
+            <div class="cartao-pausa">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+              <p class="rotulo">AULA PAUSADA</p>
+              <p class="frase-pausa">Esta aula está disponível por tempo indeterminado</p>
+              <button id="continuar" class="roll-btn" aria-label="Continuar assistindo">
+                <span class="roll-btn__label"><span class="text-original">Continuar assistindo</span><span class="text-clone" aria-hidden="true">Continuar assistindo</span></span>
+                <span class="roll-btn__dot" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
+              </button>
+            </div>
+          </div>
+          <div id="fim" class="fim" hidden><button id="repetir" aria-label="Assistir de novo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 11 7-11 7Z"/></svg><span>Assistir de novo</span></button></div>
+          <div id="controles" class="controles" hidden>
+            <div id="progresso" class="progresso" role="slider" tabindex="0" aria-label="Progresso do vídeo" aria-valuemin="0" aria-valuemax="321" aria-valuenow="0" aria-valuetext="0:00" aria-orientation="horizontal">
+              <div class="trilho"><span id="carregado"></span><span id="decorrido"></span><span id="bolinha"></span></div>
+            </div>
+            <div class="controles-linha">
+              <button id="tocar" aria-label="Pausar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 5v14M16 5v14"/></svg></button>
+              <span id="tempo" class="tempo">0:00 / 5:21</span>
+              <div class="volume">
+                <button id="mudo" aria-label="Silenciar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 5-6 4H2v6h3l6 4Z"/><path d="M15 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/></svg></button>
+                <input id="volume" type="range" min="0" max="1" step="0.05" value="1" aria-label="Volume">
+              </div>
+              <div class="velocidade">
+                <button id="velocidade" aria-label="Velocidade de reprodução" aria-expanded="false" aria-controls="menu-velocidade">1x</button>
+                <div id="menu-velocidade" class="menu-velocidade" role="group" aria-label="Velocidade de reprodução" hidden>
+                  <button type="button" data-velocidade="1" aria-pressed="true">1x</button><button type="button" data-velocidade="1.25" aria-pressed="false">1,25x</button><button type="button" data-velocidade="1.5" aria-pressed="false">1,5x</button><button type="button" data-velocidade="1.75" aria-pressed="false">1,75x</button><button type="button" data-velocidade="2" aria-pressed="false">2x</button>
+                </div>
+              </div>
+              <button id="tela" aria-label="Entrar em tela cheia"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></svg></button>
+            </div>
+          </div>
+          <p id="erro" class="erro" role="status" hidden></p>
+        </div>
+      </div>
+    </section>
+    <section id="restante" hidden aria-hidden="true">
+      <div class="d2-dobra" aria-labelledby="d2-titulo">
+        <div class="d2-conteudo">
+          <div class="d2-filete" aria-hidden="true"></div>
+          <h2 id="d2-titulo" class="d2-titulo d2-revelar">Todo mundo vê o desconto. Quase ninguém vê <em>o que vem junto.</em></h2>
+          <div class="d2-dados">
+            <div class="d2-dado d2-revelar">
+              <div class="d2-numero" aria-hidden="true">50%</div>
+              <p class="d2-texto">Um imóvel anunciado com <strong>50% abaixo do mercado</strong> é de tirar o fôlego. Pode ser a melhor compra da sua vida. Pode ser o pior negócio que você já fez.</p>
+            </div>
+            <div class="d2-dado d2-revelar">
+              <div class="d2-numero d2-intervalo" aria-hidden="true"><span data-d2-contar="1000">1.000</span><span class="d2-entre">e</span><span data-d2-contar="1500">1.500</span></div>
+              <p class="d2-texto">Todo mês, entre <strong>1.000 e 1.500 imóveis</strong> vão a leilão. Grande parte deles não é uma boa oportunidade.</p>
+            </div>
+          </div>
+          <p class="d2-texto d2-introducao d2-revelar">O que separa uma coisa da outra não é sorte. É saber ler o que está por trás do desconto:</p>
+          <!-- Grade e cartões adaptados de bento-grid-vivo.html, linhas 58 a 65 e 152 a 159. -->
+          <div class="d2-bento__grid">
+            <article class="d2-bento__c d2-revelar" style="--gvx-d:0ms">
+              <div class="d2-cartao-topo" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m12 5 10 10m-13-7 10 10M8 9l5-5 10 10-5 5ZM17 18 6 29m-2-2 11-11M19 27h10v3H19z"/></svg><span>01</span></div>
+              <h3>Leilão judicial</h3>
+              <p>Descontos grandes, mas quase sempre com algo escondido ali atrás. Imóvel ocupado, execução, uma ação que você precisa entender antes de dar o primeiro lance.</p>
+            </article>
+            <article class="d2-bento__c d2-revelar" style="--gvx-d:100ms">
+              <div class="d2-cartao-topo" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 13-8 13 8ZM5 14h22M7 14v11m9-11v11m9-11v11M5 25h22M3 29h26"/></svg><span>02</span></div>
+              <h3>Leilão de banco</h3>
+              <p>Entradas atrativas (na Caixa, por exemplo, a partir de 10%), mas o preço não é tão competitivo quanto o do judicial.</p>
+            </article>
+            <article class="d2-bento__c d2-revelar" style="--gvx-d:200ms">
+              <div class="d2-cartao-topo" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h18v26l-3-2-3 2-3-2-3 2-3-2-3 2ZM11 8h10m-10 5h10m-10 5h4m4 0h2m-10 5h4m4 0h2"/></svg><span>03</span></div>
+              <h3>Os custos fora do deságio</h3>
+              <p>Documentação, impostos, os novos impostos que estão chegando, transações da venda, comissão do corretor.</p>
+            </article>
+          </div>
+          <p class="d2-fechamento d2-revelar">Quem calcula antes, <em>compra com a cabeça.</em> Quem se empolga na hora, perde dinheiro.</p>
+        </div>
+        <!-- Painel de contraste adaptado de problema-custo-de-esperar.html, linhas 45 a 58 e 82. -->
+        <div class="d2-cost">
+          <div class="d2-cost__in">
+            <h3 class="d2-subtitulo d2-revelar">O leilão empolga. <em>E é aí que o patrimônio escorre.</em></h3>
+            <div class="d2-lances">
+              <p class="d2-texto d2-revelar"><span class="d2-degraus"><span>Você começa a dar lance.</span> <strong>Mais um.</strong> <strong>Só mais um.</strong></span> Quando percebe, passou do ponto em que o negócio ainda fazia sentido.</p>
+              <div class="d2-escada d2-revelar" aria-hidden="true">
+                <i class="d2-barra" style="--d2-altura:24%;--d2-atraso:0ms"></i>
+                <i class="d2-barra" style="--d2-altura:36%;--d2-atraso:100ms"></i>
+                <i class="d2-barra" style="--d2-altura:48%;--d2-atraso:200ms"></i>
+                <i class="d2-barra" style="--d2-altura:60%;--d2-atraso:300ms"></i>
+                <i class="d2-barra d2-barra-excesso" style="--d2-altura:73%;--d2-atraso:400ms"></i>
+                <i class="d2-barra d2-barra-excesso" style="--d2-altura:86%;--d2-atraso:500ms"></i>
+                <i class="d2-barra d2-barra-excesso" style="--d2-altura:100%;--d2-atraso:600ms"></i>
+              </div>
+            </div>
+            <div class="d2-custo-textos">
+              <p class="d2-texto d2-revelar">Investir em imóvel de leilão pede <strong>uma conta feita antes e um limite definido antes:</strong> até onde chegar, e a hora de parar.</p>
+              <p class="d2-texto d2-revelar">E fazer isso sozinho, contratando advogado, assessor de investimento e corretor separados, custa caro. <em class="d2-muito">Muito caro.</em></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Etapas adaptadas de entretempo/index.html, linha 6, e styles.css, linha 154. -->
+      <section class="d3-dobra" aria-labelledby="d3-titulo">
+        <div class="d3-conteudo">
+          <div class="d3-solucao">
+            <h2 id="d3-titulo" class="d3-titulo d2-revelar">Conheça o <em>Clube do Arremate</em>: a assessoria que caminha com você do começo ao fim.</h2>
+            <p class="d3-texto d2-revelar">Do imóvel certo ao arremate. Do arremate à desocupação. Da desocupação à revenda. Com método, com equipe e com gente que já fez isso muitas vezes.</p>
+            <div class="d3-steps d2-revelar" aria-hidden="true">
+              <div class="d3-step">
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m3 14 11-10 11 10M6 12v15h10M11 27v-9h6"/><circle cx="23" cy="21" r="5"/><path d="m27 25 4 4"/></svg>
+                <span>Imóvel certo</span>
+              </div>
+              <div class="d3-step">
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m12 5 10 10m-13-7 10 10M8 9l5-5 10 10-5 5ZM17 18 6 29m-2-2 11-11M19 27h10v3H19z"/></svg>
+                <span>Arremate</span>
+              </div>
+              <div class="d3-step">
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><circle cx="9" cy="9" r="1.5"/><path d="m16 16 13 13h-6v-4h-4v-4l-3-3"/></svg>
+                <span>Desocupação</span>
+              </div>
+              <div class="d3-step">
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3h13l11 11-15 15L3 18V5a2 2 0 0 1 2-2Z"/><circle cx="9" cy="9" r="2"/><path d="m14 12 7 7m-10-4 7 7"/></svg>
+                <span>Revenda</span>
+              </div>
+            </div>
+            <p class="d3-texto d2-revelar">O Clube do Arremate foi criado por quem vive o leilão por dentro, para o investidor que quer comprar com desconto de verdade e com segurança, sem entrar no escuro.</p>
+          </div>
+          <section class="d3-perfil" aria-labelledby="d3-quem">
+            <h3 id="d3-quem" class="d3-eyebrow d2-revelar">Quem conduz</h3>
+            <!-- Moldura dupla, arco, contorno e etiqueta adaptados de entretempo/styles.css, linhas 154 e 158. -->
+            <div class="d3-retrato d2-revelar">
+              <div class="d3-orbit-line" aria-hidden="true"></div>
+              <div class="d3-image-shell">
+                <div class="d3-image-inner">
+                  <picture>
+                    <source type="image/webp" srcset="assets/bruno-nicola-480.webp 480w, assets/bruno-nicola.webp 720w" sizes="(min-width: 1150px) 420px, (min-width: 900px) 37vw, (min-width: 440px) 326px, 70vw">
+                    <img src="assets/bruno-nicola.jpg" width="720" height="900" loading="lazy" decoding="async" alt="Bruno Nicola, fundador da Casa &amp; Leilão">
+                  </picture>
+                </div>
+                <div class="d3-photo-note"><b>Bruno Nicola</b><span>Casa &amp; Leilão</span></div>
+              </div>
+            </div>
+            <p class="d3-apresentacao d2-revelar"><strong>Bruno Nicola</strong>, fundador da Casa &amp; Leilão e gestor da BM Imobiliária, em Bertioga SP.</p>
+            <div class="d3-numeros d2-revelar" aria-hidden="true">
+              <div class="d3-dado"><span class="d3-numero">25+</span><span class="d3-legenda">anos de mercado imobiliário</span></div>
+              <div class="d3-dado"><span class="d3-numero">120 a 130</span><span class="d3-legenda">imóveis vendidos por mês</span></div>
+              <div class="d3-dado"><span class="d3-numero">300</span><span class="d3-legenda">imóveis administrados</span></div>
+            </div>
+            <ul class="d3-lista d2-revelar">
+              <li>Mais de 25 anos de mercado imobiliário. Começou aos 14, dentro da imobiliária da família.</li>
+              <li>Passou por cartório de notas, chegando a tabelião substituto, assinando escrituras.</li>
+              <li>Cinco anos na Zuckerman Leilões, onde chegou a executivo e coordenou equipe de mais de 20 pessoas. Eram, em média, 120 a 130 imóveis vendidos por mês.</li>
+              <li>Hoje a BM Imobiliária administra cerca de 300 imóveis, com mais de 10 colaboradores.</li>
+            </ul>
+            <p class="d3-fechamento d2-revelar">Ao lado dele, a Dra. Bruna, esposa e parceira nesse caminho.</p>
+          </section>
+        </div>
+      </section>
+      <section class="d4-dobra" aria-labelledby="d4-titulo">
+        <div class="d4-conteudo">
+          <h2 id="d4-titulo" class="d4-titulo d2-revelar">Uma estrutura completa para você investir com <em>mais clareza e menos risco.</em></h2>
+          <ul class="d4-lista">
+            <li class="d2-revelar"><span class="d4-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 12 4 4 8-8"/></svg></span><span><strong>Grupo direto com o Bruno e a equipe,</strong> com advogado para tirar suas dúvidas.</span></li>
+            <li class="d2-revelar"><span class="d4-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 12 4 4 8-8"/></svg></span><span><strong>Curadoria de imóveis em primeira mão.</strong> A equipe já faz a seleção; você recebe antes.</span></li>
+            <li class="d2-revelar"><span class="d4-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 12 4 4 8-8"/></svg></span><span><strong>Análise do imóvel,</strong> das condições, do prazo médio de desocupação e de revenda, tudo explicado de forma clara antes de você decidir.</span></li>
+            <li class="d2-revelar"><span class="d4-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 12 4 4 8-8"/></svg></span><span><strong>Acesso às decisões e a como elas são tomadas.</strong> É um processo em conjunto: você acompanha, entende e participa.</span></li>
+            <li class="d2-revelar"><span class="d4-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 12 4 4 8-8"/></svg></span><span><strong>Caminho completo:</strong> comprar, desocupar e revender, com acompanhamento de perto de profissionais treinados. Quando você quiser, pode até seguir sozinho depois.</span></li>
+            <li class="d2-revelar"><span class="d4-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 12 4 4 8-8"/></svg></span><span><strong>Uma análise detalhada por mês,</strong> no valor de R$1.200, inclusa para quem está no Clube.</span></li>
+            <li class="d2-revelar"><span class="d4-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 12 4 4 8-8"/></svg></span><span><strong>Comissão diferenciada na revenda,</strong> porque os imóveis são vendidos pela BM Imobiliária.</span></li>
+          </ul>
+          <p class="d4-destaque d2-revelar">Contratar tudo isso separadamente (escritório de advocacia, assessor de investimento e corretor) custa muito mais.</p>
+          <!-- Cartão Premium adaptado de gravyx/index.html, linhas 313 a 322 e 825 a 880. -->
+          <div class="d4-oferta-revelar d2-revelar">
+            <div id="oferta" class="d4-oferta">
+              <p class="d4-rotulo">Seu investimento</p>
+              <p class="d4-preco"><span class="d4-parcelas">12x de R$</span> <span class="d4-valor">291,67</span></p>
+              <p class="d4-seguranca">Um valor pequeno perto da segurança de saber o que está comprando, até onde pode ir e como vai vender.</p>
+              <a id="cta-checkout" class="roll-btn d4-comprar js-checkout" href="https://pay.hotmart.com/P96710671A?sck=bio-casa&amp;bid=1794537915126" rel="noopener">
+                <span class="roll-btn__label"><span class="text-original">QUERO ENTRAR NO CLUBE DO ARREMATE</span><span class="text-clone" aria-hidden="true">QUERO ENTRAR NO CLUBE DO ARREMATE</span></span>
+                <span class="roll-btn__dot" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Caixa final adaptada de entretempo/styles.css, linhas 154, 158 e 160. -->
+      <section class="d5-dobra" aria-labelledby="d5-titulo">
+        <div class="d5-contact">
+          <h2 id="d5-titulo" class="d5-titulo d2-revelar">Você pode continuar olhando o desconto de fora. <em>Ou pode arrematar com método.</em></h2>
+          <div class="d5-conteudo">
+            <p class="d5-texto d2-revelar">Os imóveis com grandes descontos estão aparecendo todo mês. Quem tem análise, equipe e limite definido faz negócio. Quem entra pela emoção paga a conta.</p>
+            <p class="d5-texto d2-revelar">No Clube do Arremate você não caminha sozinho: tem curadoria, advogado, a estrutura da BM Imobiliária e um processo claro, desde a busca do imóvel ideal até a venda do imóvel já reformado, com acompanhamento de ponta a ponta.</p>
+            <p class="d5-aviso d2-revelar">Resultado depende de cada imóvel, de cada negociação e do mercado. O que o Clube entrega é método, informação e companhia para você decidir melhor.</p>
+            <div class="d5-acao d2-revelar">
+              <p class="d5-chamada">Aproveite a condição atual e vamos arrematar juntos.</p>
+              <a class="roll-btn d4-comprar js-checkout d5-comprar" href="https://pay.hotmart.com/P96710671A?sck=bio-casa&amp;bid=1794537915126" rel="noopener">
+                <span class="roll-btn__label"><span class="text-original">QUERO ARREMATAR COM O CLUBE</span><span class="text-clone" aria-hidden="true">QUERO ARREMATAR COM O CLUBE</span></span>
+                <span class="roll-btn__dot" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
+              </a>
+              <p class="d5-preco">12x de R$ 291,67</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Barra adaptada de gravyx/index.html, linhas 303 a 311 e 1164 a 1172. -->
+      <div class="d4-mcta" aria-hidden="true" inert>
+        <div class="d4-mcta-in">
+          <a class="roll-btn d4-comprar js-checkout d4-comprar-barra" href="https://pay.hotmart.com/P96710671A?sck=bio-casa&amp;bid=1794537915126" rel="noopener" tabindex="-1">
+                <span class="roll-btn__label"><span class="text-original">QUERO ENTRAR NO CLUBE DO ARREMATE</span><span class="text-clone" aria-hidden="true">QUERO ENTRAR NO CLUBE DO ARREMATE</span></span>
+                <span class="roll-btn__dot" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
+              </a>
+        </div>
+      </div>
+    </section>
+    <footer class="d5-rodape">
+      <img src="assets/icone.png" width="28" height="28" alt="">
+      <p>© 2026 Casa &amp; Leilão</p>
+    </footer>
+  </main>
+  <a class="d5-whats" href="https://wa.me/5511997676235?text=Ol%C3%A1%20gostaria%20de%20saber%20mais%20sobre%20a%20assessoria%20de%20leil%C3%A3o%2C%20vim%20pela%20aula" target="_blank" rel="noopener" aria-label="Falar no WhatsApp com a Casa &amp; Leilão" hidden>
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.52 3.449A11.814 11.814 0 0 0 12.016 0C5.495 0 .16 5.335.16 11.856c0 2.09.545 4.126 1.58 5.922L.06 24l6.335-1.663a11.887 11.887 0 0 0 5.62 1.431h.005c6.52 0 11.856-5.335 11.856-11.856a11.821 11.821 0 0 0-3.356-8.463zM12.02 21.785a9.86 9.86 0 0 1-5.031-1.378l-.361-.214-3.758.986 1.003-3.664-.235-.376a9.835 9.835 0 0 1-1.508-5.283c0-5.419 4.409-9.828 9.833-9.828a9.76 9.76 0 0 1 6.958 2.883 9.768 9.768 0 0 1 2.87 6.957c-.005 5.42-4.414 9.917-9.771 9.917zm5.392-7.36c-.294-.148-1.748-.863-2.02-.962-.272-.098-.47-.148-.668.148-.197.294-.766.962-.939 1.16-.173.197-.346.222-.64.074-.294-.148-1.244-.459-2.37-1.464-.875-.781-1.466-1.745-1.638-2.04-.173-.295-.018-.455.13-.602.133-.132.295-.345.443-.518.148-.173.197-.295.295-.492.099-.198.05-.37-.025-.519-.074-.148-.667-1.61-.914-2.206-.24-.58-.484-.501-.667-.51-.173-.009-.37-.01-.568-.01-.198 0-.519.074-.79.37-.272.295-1.038 1.014-1.038 2.474 0 1.46 1.062 2.87 1.21 3.068.148.197 2.09 3.192 5.062 4.477.707.305 1.258.488 1.688.625.71.226 1.356.194 1.866.118.57-.085 1.748-.715 1.995-1.405.247-.69.247-1.282.173-1.405-.074-.124-.272-.198-.566-.346z"/></svg>
+  </a>
+</body>
+</html>
